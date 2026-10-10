@@ -1,0 +1,109 @@
+{
+  "schema": "baseline_report_v1",
+  "captured_utc": "2026-10-10T01:53:16.196279+00:00",
+  "engine": {
+    "min_gps_accuracy_m": 50.0,
+    "off_route_threshold_m": 250.0,
+    "off_route_fixes": 3,
+    "retrigger_cooldown_s": 600.0,
+    "max_jump_m_per_s": 120.0,
+    "corridor_radius_m": 2000.0
+  },
+  "engine_module": {
+    "path": "C:\\projects\\roadCompanion\\offline_pack\\companion_core\\playback.py",
+    "sha256": "94476d92381b843c420d11e9ff3873fd3ea6be16ec8f7b4ffce4d2d301dc178a",
+    "bundle_module_sha256": "1bf775d930378eb8dedf64d80ec7af7a4e07dcb62d8a4442fb544659e9ec315c"
+  },
+  "bundle": {
+    "dir": "C:\\projects\\roadCompanion\\offline_pack\\trip_bundle",
+    "manifest": {
+      "bundle_id": "ekb-shuvakish-v1",
+      "bundle_version": "1.0.0",
+      "route_distance_m": 25736.5,
+      "corridor_radius_m": 2000,
+      "n_stories": 12
+    },
+    "stories": [
+      {
+        "story_id": "st-001-ganina-yama",
+        "poi_id": "way/40264460",
+        "route_distance_m": 3240,
+        "trigger_radius_m": 300
+      },
+      {
+        "story_id": "st-002-shuvakish",
+        "poi_id": "node/241950037",
+        "route_distance_m": 5767,
+        "trigger_radius_m": 400
+      },
+      {
+        "story_id": "st-003-viz-stal",
+        "poi_id": "way/28775299",
+        "route_distance_m": 16492,
+        "trigger_radius_m": 550
+      },
+      {
+        "story_id": "st-004-dom-brevnovyh",
+        "poi_id": "node/10980629620",
+        "route_distance_m": 17948,
+        "trigger_radius_m": 500
+      },
+      {
+        "story_id": "st-005-uspensky-sobor",
+        "poi_id": "way/79621629",
+        "route_distance_m": 18043,
+        "trigger_radius_m": 450
+      },
+      {
+        "story_id": "st-006-cki-verh-isetsky",
+        "poi_id": "node/586032285",
+        "route_distance_m": 18128,
+        "trigger_radius_m": 550
+      },
+      {
+        "story_id": "st-007-centralny-stadion",
+        "poi_id": "relation/18537813",
+        "route_distance_m": 18755,
+        "trigger_radius_m": 850
+      },
+      {
+        "story_id": "st-008-ioanno-predtechensky",
+        "poi_id": "relation/3829211",
+        "route_distance_m": 19031,
+        "trigger_radius_m": 900
+      },
+      {
+        "story_id": "st-009-hram-serafima",
+        "poi_id": "way/61699571",
+        "route_distance_m": 21771,
+        "trigger_radius_m": 600
+      },
+      {
+        "story_id": "st-010-memorial-lokomotiv",
+        "poi_id": "node/3234349255",
+        "route_distance_m": 22238,
+        "trigger_radius_m": 1100
+      },
+      {
+        "story_id": "st-011-muzey-tramvaya",
+        "poi_id": "node/2472964638",
+        "route_distance_m": 24151,
+        "trigger_radius_m": 725
+      },
+      {
+        "story_id": "st-012-reka-iset",
+        "poi_id": "way/976168481",
+        "route_distance_m": 25527,
+        "trigger_radius_m": 350
+      }
+    ]
+  },
+  "reference_simulation_is_synthetic_not_field": true,
+  "reference_simulation": {
+    "is_real_car_drive": false,
+    "stories_triggered": 12,
+    "status_summary": {
+      "TRIGGERED": 12
+    }
+  }
+}

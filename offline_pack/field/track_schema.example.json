@@ -1,0 +1,54 @@
+{
+  "schema": "field_track_v1",
+  "_comment": "Пример формата записи трека. Координаты — нейтральные точки (средняя полоса тестового участка, НЕ домашний адрес и не реальный маршрут). Реальный трек не сглаживается.",
+  "track_id": "example-neutral-0001",
+  "is_real_car_drive": false,
+  "source": {
+    "tool": "GPSLogger / браузерный recorder / GPX-экспорт",
+    "original_format": "gpx | nmea | json",
+    "original_file": "2026-10-11_field.gpx"
+  },
+  "privacy": {
+    "contains_personal_data": false,
+    "send_to_external_services": false
+  },
+  "route_notes": {
+    "same_route_as_bundle": true,
+    "deviations": "нет"
+  },
+  "fixes": [
+    {
+      "timestamp_utc": "2026-10-11T07:00:00+00:00",
+      "timestamp_s": 0.0,
+      "latitude": 55.7512433,
+      "longitude": 37.6184233,
+      "horizontal_accuracy_m": 5.0,
+      "speed_mps": 8.3,
+      "bearing_deg": 224.0,
+      "missing": false,
+      "skip_reason": null
+    },
+    {
+      "timestamp_utc": "2026-10-11T07:00:05+00:00",
+      "timestamp_s": 5.0,
+      "latitude": 55.7513333,
+      "longitude": 37.6186667,
+      "horizontal_accuracy_m": 6.5,
+      "speed_mps": 8.9,
+      "bearing_deg": 226.0,
+      "missing": false,
+      "skip_reason": null
+    },
+    {
+      "timestamp_utc": "2026-10-11T07:00:10+00:00",
+      "timestamp_s": 10.0,
+      "latitude": null,
+      "longitude": null,
+      "horizontal_accuracy_m": null,
+      "speed_mps": null,
+      "bearing_deg": null,
+      "missing": true,
+      "skip_reason": "no_fix"
+    }
+  ]
+}

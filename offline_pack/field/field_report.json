@@ -1,0 +1,260 @@
+{
+  "schema": "field_report_v1",
+  "status": "OK",
+  "track_meta": {
+    "track_id": "20261010-080834",
+    "is_real_car_drive": true,
+    "fixes_total": 2583
+  },
+  "metrics": {
+    "schema": "field_metrics_v1",
+    "expected_triggers": 5,
+    "triggered": 7,
+    "poi_classes": {
+      "passed_near": 5,
+      "near_crow_flies_but_offroad": 6,
+      "not_passed": 1
+    },
+    "expected_trigger_share": 1.0,
+    "justified_trigger_share": 1.0,
+    "repeated_triggers": 0,
+    "trigger_distance_distribution_m": {
+      "min": 235,
+      "max": 547,
+      "values": [
+        235,
+        296,
+        398,
+        446,
+        494,
+        547,
+        547
+      ]
+    },
+    "rejected_fix_share": 0.028,
+    "indeterminate_gps_cases": 0,
+    "assumptions": {
+      "accuracy": {
+        "assumed_m": 10.0,
+        "filled_fixes": 2583,
+        "reason": "рекордер не сохранил HDOP/accuracy; движку нужна точность для отбраковки фиксаций. Значение — допущение, а не измерение."
+      }
+    },
+    "per_poi": [
+      {
+        "story_id": "st-001-ganina-yama",
+        "poi_id": "way/40264460",
+        "title": "Ганина Яма",
+        "trigger_radius_m": 300,
+        "story_distance_to_route_m": 200.9,
+        "min_track_distance_to_poi_m": 198.6,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 0,
+        "class": "passed_near",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:13:22Z",
+          "source_index": 288,
+          "latitude": 56.94362336,
+          "longitude": 60.47709117,
+          "distance_to_poi_m": 296,
+          "accuracy_m": 10.0,
+          "progress_m": 3065
+        },
+        "timing": "within_radius_approaching"
+      },
+      {
+        "story_id": "st-002-shuvakish",
+        "poi_id": "node/241950037",
+        "title": "Посёлок Шувакиш",
+        "trigger_radius_m": 400,
+        "story_distance_to_route_m": 304.7,
+        "min_track_distance_to_poi_m": 306.0,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 0,
+        "class": "passed_near",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:15:59Z",
+          "source_index": 444,
+          "latitude": 56.92333773,
+          "longitude": 60.47833529,
+          "distance_to_poi_m": 398,
+          "accuracy_m": 10.0,
+          "progress_m": 5491
+        },
+        "timing": "within_radius_approaching"
+      },
+      {
+        "story_id": "st-003-viz-stal",
+        "poi_id": "way/28775299",
+        "title": "ВИЗ-Сталь",
+        "trigger_radius_m": 550,
+        "story_distance_to_route_m": 452.3,
+        "min_track_distance_to_poi_m": 458.0,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 0,
+        "class": "passed_near",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:28:43Z",
+          "source_index": 1208,
+          "latitude": 56.85393528,
+          "longitude": 60.55201096,
+          "distance_to_poi_m": 547,
+          "accuracy_m": 10.0,
+          "progress_m": 16196
+        },
+        "timing": "within_radius_approaching"
+      },
+      {
+        "story_id": "st-004-dom-brevnovyh",
+        "poi_id": "node/10980629620",
+        "title": "Дом Бревновых",
+        "trigger_radius_m": 500,
+        "story_distance_to_route_m": 417.3,
+        "min_track_distance_to_poi_m": 50.5,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 0,
+        "class": "near_crow_flies_but_offroad",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:30:49Z",
+          "source_index": 1334,
+          "latitude": 56.84200116,
+          "longitude": 60.56244836,
+          "distance_to_poi_m": 494,
+          "accuracy_m": 10.0,
+          "progress_m": 17699
+        },
+        "timing": "within_radius_approaching"
+      },
+      {
+        "story_id": "st-005-uspensky-sobor",
+        "poi_id": "way/79621629",
+        "title": "Успенский собор на ВИЗе",
+        "trigger_radius_m": 450,
+        "story_distance_to_route_m": 361.8,
+        "min_track_distance_to_poi_m": 226.5,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 0,
+        "class": "passed_near",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:30:54Z",
+          "source_index": 1339,
+          "latitude": 56.84137583,
+          "longitude": 60.56239698,
+          "distance_to_poi_m": 446,
+          "accuracy_m": 10.0,
+          "progress_m": 17768
+        },
+        "timing": "within_radius_approaching"
+      },
+      {
+        "story_id": "st-006-cki-verh-isetsky",
+        "poi_id": "node/586032285",
+        "title": "Культурный центр «Верх-Исетский»",
+        "trigger_radius_m": 550,
+        "story_distance_to_route_m": 472.9,
+        "min_track_distance_to_poi_m": 365.4,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 0,
+        "class": "passed_near",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:31:02Z",
+          "source_index": 1347,
+          "latitude": 56.84072682,
+          "longitude": 60.56234208,
+          "distance_to_poi_m": 547,
+          "accuracy_m": 10.0,
+          "progress_m": 17840
+        },
+        "timing": "within_radius_approaching"
+      },
+      {
+        "story_id": "st-007-centralny-stadion",
+        "poi_id": "relation/18537813",
+        "title": "Центральный стадион",
+        "trigger_radius_m": 850,
+        "story_distance_to_route_m": 747.5,
+        "min_track_distance_to_poi_m": 433.3,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": false,
+        "rejected_fixes_near": 4,
+        "class": "near_crow_flies_but_offroad"
+      },
+      {
+        "story_id": "st-008-ioanno-predtechensky",
+        "poi_id": "relation/3829211",
+        "title": "Иоанно-Предтеченский собор",
+        "trigger_radius_m": 900,
+        "story_distance_to_route_m": 768.3,
+        "min_track_distance_to_poi_m": 675.7,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": false,
+        "rejected_fixes_near": 41,
+        "class": "near_crow_flies_but_offroad"
+      },
+      {
+        "story_id": "st-009-hram-serafima",
+        "poi_id": "way/61699571",
+        "title": "Храм Серафима Саровского",
+        "trigger_radius_m": 600,
+        "story_distance_to_route_m": 504.7,
+        "min_track_distance_to_poi_m": 1487.8,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": false,
+        "rejected_fixes_near": 0,
+        "class": "not_passed"
+      },
+      {
+        "story_id": "st-010-memorial-lokomotiv",
+        "poi_id": "node/3234349255",
+        "title": "Мемориал «Погибшим игрокам ХК „Локомотив“»",
+        "trigger_radius_m": 1100,
+        "story_distance_to_route_m": 995.0,
+        "min_track_distance_to_poi_m": 800.7,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": false,
+        "rejected_fixes_near": 49,
+        "class": "near_crow_flies_but_offroad"
+      },
+      {
+        "story_id": "st-011-muzey-tramvaya",
+        "poi_id": "node/2472964638",
+        "title": "Музей истории трамвая и троллейбуса",
+        "trigger_radius_m": 725,
+        "story_distance_to_route_m": 638.0,
+        "min_track_distance_to_poi_m": 236.7,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": false,
+        "rejected_fixes_near": 8,
+        "class": "near_crow_flies_but_offroad"
+      },
+      {
+        "story_id": "st-012-reka-iset",
+        "poi_id": "way/976168481",
+        "title": "Река Исеть",
+        "trigger_radius_m": 350,
+        "story_distance_to_route_m": 259.8,
+        "min_track_distance_to_poi_m": 200.8,
+        "min_track_distance_to_route_m": 0.0,
+        "triggered": true,
+        "rejected_fixes_near": 8,
+        "class": "near_crow_flies_but_offroad",
+        "trigger": {
+          "timestamp_utc": "2026-10-10T03:49:50Z",
+          "source_index": 2475,
+          "latitude": 56.81591211,
+          "longitude": 60.62810565,
+          "distance_to_poi_m": 235,
+          "accuracy_m": 10.0,
+          "progress_m": 25527
+        },
+        "timing": "within_radius_approaching"
+      }
+    ]
+  }
+}

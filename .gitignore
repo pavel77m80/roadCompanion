@@ -1,0 +1,36 @@
+# ПЕРСОНАЛЬНЫЕ ДАННЫЕ: эксперимент с домашнего адреса не коммитится
+# (координаты, адреса, сырые ответы API по личному маршруту)
+experiment/
+
+# Офлайн-бандл тестового маршрута (координаты маршрута/POI привязаны к
+# личной поездке) — не коммитим; сборка бандла остаётся локальной задачей
+offline_pack/trip_bundle/
+
+# Отчёты, производные от личного маршрута/бандла
+offline_pack/preflight_report.json
+offline_pack/selection_report.json
+offline_pack/simulation_log.json
+
+# Сырые GPS-треки полевого теста (координаты проезда, в т.ч. потенциально
+# домашние точки) — не коммитим, отчёты агрегированные остаются в репо
+experiment/*.gpx
+experiment/*.kml
+offline_pack/field/field_track_*.json
+offline_pack/field/*.replay.json
+
+# Быстрая проверка tmp-бандлов
+_tmp_off/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Секреты и локальные креды
+.env
+.env.*
+!*.example.env
+
+# IDE
+.vscode/
+.idea/

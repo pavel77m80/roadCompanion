@@ -1,0 +1,65 @@
+{
+  "schema": "field_calibration_v1",
+  "track_id": "20261010-080834",
+  "is_real_car_drive": true,
+  "rule": "минимальное изменение; baseline сохраняется; параметры не подгоняются под единственный трек любой ценой",
+  "variants": [
+    {
+      "variant": "baseline",
+      "note": "исходные параметры (не менять)",
+      "radius_factor": null,
+      "off_route_threshold_m": 250.0,
+      "expected_trigger_share": 1.0,
+      "justified_trigger_share": 1.0,
+      "repeated_triggers": 0,
+      "triggered": 7,
+      "score": 1.0
+    },
+    {
+      "variant": "radius_x0.8",
+      "note": "",
+      "radius_factor": 0.8,
+      "off_route_threshold_m": 250.0,
+      "expected_trigger_share": 1.0,
+      "justified_trigger_share": 1.0,
+      "repeated_triggers": 0,
+      "triggered": 6,
+      "score": 1.0
+    },
+    {
+      "variant": "radius_x1.3",
+      "note": "",
+      "radius_factor": 1.3,
+      "off_route_threshold_m": 250.0,
+      "expected_trigger_share": 1.0,
+      "justified_trigger_share": 1.0,
+      "repeated_triggers": 0,
+      "triggered": 8,
+      "score": 1.0
+    },
+    {
+      "variant": "off_route_200",
+      "note": "",
+      "radius_factor": null,
+      "off_route_threshold_m": 200.0,
+      "expected_trigger_share": 1.0,
+      "justified_trigger_share": 1.0,
+      "repeated_triggers": 0,
+      "triggered": 7,
+      "score": 1.0
+    },
+    {
+      "variant": "off_route_300",
+      "note": "",
+      "radius_factor": null,
+      "off_route_threshold_m": 300.0,
+      "expected_trigger_share": 1.0,
+      "justified_trigger_share": 1.0,
+      "repeated_triggers": 0,
+      "triggered": 7,
+      "score": 1.0
+    }
+  ],
+  "recommendation": "baseline (без изменений)",
+  "baseline_preserved": true
+}

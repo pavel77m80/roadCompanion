@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road Companion — GPS recorder</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 1rem; max-width: 640px; }
+  .big { font-size: 1.2rem; margin: .4rem 0; }
+  #log { font-family: monospace; font-size: .75rem; max-height: 40vh; overflow: auto;
+         background: #f4f4f4; padding: .5rem; border-radius: 6px; }
+  button { font-size: 1.1rem; padding: .6rem 1rem; margin: .3rem .3rem .3rem 0; }
+  .warn { color: #a00; font-weight: 600; }
+</style>
+</head>
+<body>
+<h1>GPS recorder (офлайн)</h1>
+<p class="warn">Не используйте приложение во время движения. Запись запускает
+пассажир до старта; телефон закреплён безопасно. Данные не отправляются в
+интернет — экспорт сохраняет файл на устройстве.</p>
+
+<div>
+  <button id="start">Начать запись</button>
+  <button id="stop" disabled>Остановить</button>
+  <button id="save" disabled>Скачать JSON</button>
+  <button id="saveGpx" disabled>Скачать GPX</button>
+</div>
+
+<p class="big">Статус: <b id="status">ожидание</b></p>
+<p class="big">Фиксаций: <b id="count">0</b> · точность: <b id="acc">–</b> м</p>
+<div id="log"></div>
+
+<script>
+"use strict";
+let watchId = null;
+let fixes = [];
+let t0 = null;
+const $ = (id) => document.getElementById(id);
+
+function log(msg) {
+  const el = $("log");
+  el.textContent = new Date().toISOString() + "  " + msg + "\n" + el.textContent;
+}
+
+function start() {
+  if (!("geolocation" in navigator)) { $("status").textContent = "нет GPS API"; return; }
+  fixes = []; t0 = null; $("count").textContent = "0"; $("acc").textContent = "–";
+  $("status").textContent = "запись…";
+  $("start").disabled = true; $("stop").disabled = false;
+  watchId = navigator.geolocation.watchPosition(onFix, onErr, {
+    enableHighAccuracy: true, maximumAge: 0, timeout: 15000,
+  });
+}
+
+function onErr(e) {
+  log("ОШИБКА: " + e.message + " (код " + e.code + ")");
+  // регистрируем пропуск фиксации, а не нулевые координаты
+  fixes.push({
+    timestamp_utc: new Date().toISOString(), timestamp_s: null,
+    latitude: null, longitude: null, horizontal_accuracy_m: null,
+    speed_mps: null, bearing_deg: null, missing: true, skip_reason: "gps_error",
+  });
+  $("count").textContent = String(fixes.length);
+}
+
+function onFix(pos) {
+  const c = pos.coords;
+  const now = pos.timestamp || Date.now();
+  if (t0 === null) t0 = now;
+  const fix = {
+    timestamp_utc: new Date(now).toISOString(),
+    timestamp_s: (now - t0) / 1000,
+    latitude: c.latitude,
+    longitude: c.longitude,
+    horizontal_accuracy_m: c.accuracy != null ? c.accuracy : null,
+    speed_mps: c.speed != null ? c.speed : null,
+    bearing_deg: c.heading != null && !isNaN(c.heading) ? c.heading : null,
+    missing: false,
+    skip_reason: null,
+  };
+  fixes.push(fix);
+  $("count").textContent = String(fixes.length);
+  $("acc").textContent = fix.horizontal_accuracy_m != null
+    ? fix.horizontal_accuracy_m.toFixed(1) : "–";
+  log(`fix lat=${fix.latitude.toFixed(6)} lon=${fix.longitude.toFixed(6)} ` +
+      `acc=${fix.horizontal_accuracy_m} v=${fix.speed_mps}`);
+}
+
+function stop() {
+  if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+  watchId = null;
+  $("status").textContent = "остановлено";
+  $("stop").disabled = true; $("start").disabled = false;
+  $("save").disabled = false; $("saveGpx").disabled = false;
+}
+
+function track() {
+  return {
+    schema: "field_track_v1",
+    track_id: "field-" + new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-"),
+    is_real_car_drive: true,
+    source: { tool: "browser-geolocation-recorder", original_format: "json",
+              original_file: null },
+    privacy: { contains_personal_data: false, send_to_external_services: false },
+    route_notes: { same_route_as_bundle: null, deviations: null },
+    fixes: fixes,
+  };
+}
+
+function download(name, text, mime) {
+  const blob = new Blob([text], { type: mime });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function save() {
+  const t = track();
+  download(t.track_id + ".json", JSON.stringify(t, null, 2), "application/json");
+}
+
+function saveGpx() {
+  const t = track();
+  let gpx = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<gpx version="1.1" creator="roadCompanion-recorder" ' +
+    'xmlns="http://www.topografix.com/GPX/1/1">\n<trk><trkseg>\n';
+  for (const f of t.fixes) {
+    if (f.missing || f.latitude == null) continue;
+    gpx += `<trkpt lat="${f.latitude}" lon="${f.longitude}">` +
+      `<time>${f.timestamp_utc}</time>` +
+      (f.horizontal_accuracy_m != null
+        ? `<hdop>${(f.horizontal_accuracy_m / 5).toFixed(2)}</hdop>` : "") +
+      "</trkpt>\n";
+  }
+  gpx += "</trkseg></trk></gpx>\n";
+  download(t.track_id + ".gpx", gpx, "application/gpx+xml");
+}
+
+$("start").addEventListener("click", start);
+$("stop").addEventListener("click", stop);
+$("save").addEventListener("click", save);
+$("saveGpx").addEventListener("click", saveGpx);
+</script>
+</body>
+</html>
